@@ -3,10 +3,14 @@ const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const app = express()
 const cors = require('cors')
+const userData = require('./routes/user_data')
+const connections = require('./routes/connections')
 
 app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(cors())
+app.use('/user-data', userData)
+app.use('/connections', connections)
 
 
 
