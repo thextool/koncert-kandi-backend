@@ -17,4 +17,11 @@ module.exports = {
             .returning('*')
             .then(record => record[0])
     },
+    deleteUser(id) {
+        return db('user_data')
+        .delete()
+        .where('id', id)
+        .returning('*')
+        .then(record => record[0])
+    },
 }

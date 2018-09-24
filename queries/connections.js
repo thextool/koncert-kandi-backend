@@ -11,5 +11,17 @@ module.exports = {
         .returning('*')
         .then(record => record[0])
     },
-
+    updateConnection(id, connection){
+        return db('connections')
+        .update(connection)
+        .where('id', id)
+        .returning('*')
+        .then(record => record[0])
+    },
+    createConnection(connection) {
+        return db('connections')
+            .insert(connection)
+            .returning('*')
+            .then(record => record[0])
+    },
 }

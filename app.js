@@ -12,15 +12,12 @@ app.use(cors())
 app.use('/user-data', userData)
 app.use('/connections', connections)
 
-
-
 app.use((req, res, next) => {
     const err = new Error('Not Found')
     res.status(404)
     next(err)
 })
 
-// error handler
 app.use((err, req, res, next) => {
     res
     .status(err.status || 500)

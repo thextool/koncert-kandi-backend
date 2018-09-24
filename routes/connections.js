@@ -9,12 +9,26 @@ router.get('/', (req, resp, next) => {
         .catch(next)
 })
 
+router.put("/edit/:id", (request, response, next) => {
+    queries.updateConnection(request.params.id, request.body).then(connection => {
+        response.json({connection: connection})
+    }).catch(next)
+})
+
+router.post("/new", (request, response, next) => {
+    queries.createConnection(request.body)
+    .then(connection => {
+        response.status(201).json({connection})
+    })
+    .catch(next)
+})
+
 router.delete("/:id", (request, response, next) => {
     queries.deleteConnection(request.params.id)
     .then(() => {
-        response.status(204).json({deleted: true});
+        response.status(204).json({deleted: true})
     })
-    .catch(next);
-});
+    .catch(next)
+})
 
 module.exports = router
