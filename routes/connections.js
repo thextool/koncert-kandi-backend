@@ -9,14 +9,12 @@ router.get('/', (req, resp, next) => {
         .catch(next)
 })
 
-router.post("/new", (request, response, next) => {
-    queries.createUser(request.body)
-    .then(userData => {
-        response.status(201).json({userData})
+router.delete("/:id", (request, response, next) => {
+    queries.deleteConnection(request.params.id)
+    .then(() => {
+        response.status(204).json({deleted: true});
     })
     .catch(next);
-})
-
-
+});
 
 module.exports = router
