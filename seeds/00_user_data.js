@@ -1,13 +1,15 @@
 
 exports.seed = function(knex, Promise) {
-  // Deletes ALL existing entries
-  return knex('table_name').del()
+  return knex('user_data').del()
     .then(function () {
-      // Inserts seed entries
-      return knex('table_name').insert([
-        {id: 1, colName: 'rowValue1'},
-        {id: 2, colName: 'rowValue2'},
-        {id: 3, colName: 'rowValue3'}
+      return knex('user_data').insert([
+        {
+          first_name: 'Matt',
+          last_name: 'Riach',
+          location_x: 39.7392,
+          location_y: 104.9903,
+          gene: 1,
+        }
       ]);
     });
 };
